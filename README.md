@@ -1,24 +1,28 @@
-# README
+# ASBoL
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+好きなお酒やお酒を飲めるお酒をマップ上にマークし共有することができる
 
-Things you may want to cover:
+### テーマを選んだ理由
+お酒が好きでよくお酒を飲みに行くのですが、知らない土地に行った際にどこに飲みに行くのか迷ってしまいます。
+そんな時にお酒が好きな人たちのおすすめのお酒やお店がわかれば便利だと思い、このSNSを作りたいと思いました。
 
-* Ruby version
+### ターゲットユーザ
+お酒が好きな人
 
-* System dependencies
+### 主な利用シーン
+美味しいお酒を飲みにいきたいと思っている時、おすすめのお酒やお店を投稿したい時
 
-* Configuration
+## 設計書
+使用検討中です
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+使用検討中です
