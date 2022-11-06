@@ -4,10 +4,12 @@ devise_for :members, controllers: {
   sessions: 'public/sessions'
 }
 
-# 管理者用
-# URL /admin/sign_in ...
+
 devise_for :admin, controllers: {
   sessions: "admin/sessions"
 }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+scope module: :public do
+    root to: "homes#top"
+end
+
 end
