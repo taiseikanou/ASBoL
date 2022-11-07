@@ -29,12 +29,16 @@ scope module: :public do
     get 'members/index'
     get 'members/show'
     get 'members/edit'
+    post '/guests/guest_sign_in', to: 'guests#new_guest'
 end
 
+
 namespace :admin do
+    root to: "homes#top"
     get 'members/index'
     get 'members/show'
     get 'members/edit'
+    post '/guests/guest_sign_in', to: 'guests#new_guest'
   end
 
 end
