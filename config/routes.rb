@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :public do
+    resources :maps, only: [:index]
+  end
+  namespace :public do
     get 'comments/index'
     get 'comments/show'
   end
@@ -26,10 +29,8 @@ devise_for :admin, controllers: {
 }
 scope module: :public do
     root to: "homes#top"
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
-    post '/guests/guest_sign_in', to: 'guests#new_guest'
+　　resources :member, only:[:show,:edit,:create,:update]
+　　resources :items, only: [:index,:new,:create,:show,:edit,:update]
 end
 
 
