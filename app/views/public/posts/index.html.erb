@@ -1,0 +1,14 @@
+<% @posts.each do |posts| %>
+  <p>お気に入りのお店</p>
+  <%= link_to post_path(posts.id) do %>
+  <span><%= posts.shop_name %></span>
+  <% end %>
+  <p>説明</p>
+  <span><%= posts.explanation %></span>
+  <p>画像</p>
+  <% if posts.image.attached? %>
+    <%= image_tag posts.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+<% end %>
