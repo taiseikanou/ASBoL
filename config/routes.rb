@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    resources :maps, only: [:index]
-  end
+
   namespace :public do
     get 'comments/index'
     get 'comments/show'
@@ -9,14 +7,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'comments/index'
     get 'comments/show'
-  end
-  namespace :admin do
-    get 'favorite_shops/index'
-    get 'favorite_shops/show'
-  end
-  namespace :public do
-    get 'favorite_shops/index'
-    get 'favorite_shops/show'
   end
 devise_for :members, controllers: {
   registrations: "public/registrations",
@@ -29,16 +19,18 @@ devise_for :admin, controllers: {
 }
 scope module: :public do
     root to: "homes#top"
-　　resources :member, only:[:show,:edit,:create,:update]
-　　resources :items, only: [:index,:new,:create,:show,:edit,:update]
+    post '/guests/guest_sign_in', to: 'guests#new_guest'
+    resource :members,only:[:show,:update,:create,:edit,:index]
+    resources :posts, only: [:index,:show,:update,:create,:edit,:new]do
+     resources :post_comments, only: [:create]
+   end
 end
+
 
 
 namespace :admin do
     root to: "homes#top"
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
+    resources :members,only:[:index,:show,:update,:create]
     post '/guests/guest_sign_in', to: 'guests#new_guest'
   end
 

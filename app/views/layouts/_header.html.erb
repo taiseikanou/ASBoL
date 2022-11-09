@@ -10,7 +10,7 @@
         <ul class="navbar-nav ml-auto">
         <% if  admin_signed_in? %>
           <li>
-            <%= link_to admin_members_index_path, class: 'nav-link text-light' do %>
+            <%= link_to admin_members_path, class: 'nav-link text-light' do %>
               会員一覧
             <% end %>
           </li>
@@ -28,7 +28,7 @@
           </li>
         <% elsif member_signed_in? %>
           <li>
-            <%= link_to new_member_session_path, class: 'nav-link text-light' do %>
+            <%= link_to members_path, class: 'nav-link text-light' do %>
               マイページ
             <% end %>
           </li>
@@ -38,8 +38,13 @@
             <% end %>
           </li>
           <li>
-            <%= link_to new_member_session_path, class: 'nav-link text-light' do %>
-              投稿
+            <%= link_to posts_path, class: 'nav-link text-light' do %>
+              投稿一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_post_path, class: 'nav-link text-light' do %>
+              投稿する
             <% end %>
           </li>
           <li>
