@@ -15,7 +15,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to admin_members_index_path, class: 'nav-link text-light' do %>
+            <%= link_to admin_members_path, class: 'nav-link text-light' do %>
               投稿一覧
             <% end %>
           </li>
@@ -28,7 +28,7 @@
           </li>
         <% elsif member_signed_in? %>
           <li>
-            <%= link_to members_path, class: 'nav-link text-light' do %>
+            <%= link_to member_path(current_member), class: 'nav-link text-light' do %>
               マイページ
             <% end %>
           </li>

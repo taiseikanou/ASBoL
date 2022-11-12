@@ -3,6 +3,8 @@
   <%= link_to post_path(posts.id) do %>
   <span><%= posts.shop_name %></span>
   <% end %>
+  <p>ニックネーム</p>
+   <%= posts.member.nickname %>
   <p>説明</p>
   <span><%= posts.explanation %></span>
   <p>画像</p>

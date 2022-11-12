@@ -4,14 +4,20 @@ class Public::PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def new
+    @post = Post.new
+  end
+
   def create
     @post = Post.new(post_params)
+    @post.member_id = current_member.id
     @post.save
     redirect_to request.referer
   end
 
   def show
     @post = Post.find(params[:id])
+    @member = @post.member_id
     @post_comment = PostComment.new
   end
 
