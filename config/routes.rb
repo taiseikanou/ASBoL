@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :public do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
+  namespace :public do
     get 'comments/index'
     get 'comments/show'
   end
@@ -20,9 +24,14 @@ devise_for :admin, controllers: {
 scope module: :public do
     root to: "homes#top"
     post '/guests/guest_sign_in', to: 'guests#new_guest'
-    resource :members,only:[:show,:update,:create,:edit,:index]
+    resources :members,only:[:show,:update,:create,:edit,:index]do
+       resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
+    end
     resources :posts, only: [:index,:show,:update,:create,:edit,:new]do
      resources :post_comments, only: [:create]
+     resource :favorites, only: [:create, :destroy]
    end
 end
 
