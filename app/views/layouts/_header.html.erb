@@ -15,7 +15,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to admin_members_path, class: 'nav-link text-light' do %>
+            <%= link_to admin_posts_path, class: 'nav-link text-light' do %>
               投稿一覧
             <% end %>
           </li>
@@ -25,6 +25,7 @@
             <% end %>
           </li>
           <li>
+            <%= render 'admin/searches/search' %>
           </li>
         <% elsif member_signed_in? %>
           <li>
@@ -52,9 +53,8 @@
               ログアウト
             <% end %>
           </li>
-
           <li>
-
+            <%= render 'public/searches/search' %>
           </li>
         <% else %>
           <li>
@@ -75,7 +75,10 @@
           <li>
             <%= link_to  guests_guest_sign_in_path, method: :post, class: 'nav-link text-light' do %>
              ゲストログイン（閲覧用）
-             <% end %>
+            <% end %>
+          </li>
+          <li>
+            <%= render 'public/searches/search' %>
           </li>
         <% end %>
         </ul>

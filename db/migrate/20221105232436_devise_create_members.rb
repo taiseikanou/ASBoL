@@ -35,7 +35,9 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string  :name            ,null: false
       t.string  :favorite_alcohol
       t.text    :introduction
+      t.integer :member_status    ,null: false, default: 0
       t.timestamps               null: false
+      t.boolean :is_deleted	      ,null:false
     end
 
     add_index :members, :email,                unique: true

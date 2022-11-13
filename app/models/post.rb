@@ -6,4 +6,7 @@ class Post < ApplicationRecord
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
+  def self.looks(search, word)
+    where("shop_name LIKE?","%#{word}%")
+  end
 end
