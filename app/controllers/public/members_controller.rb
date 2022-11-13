@@ -9,15 +9,18 @@ class Public::MembersController < ApplicationController
 
   def edit
     @member = current_member
-     if @member.update(member_params)
-      flash[:success] = "登録情報を編集しました。"
-      redirect_to members_path(current_customer)
-     else
-      flash[:alert] = "もう一度入力してください。"
-      render :edit
-     end
   end
-  
+
+  def update
+     @member = current_member
+     @member.update(member_params)
+     redirect_to member_path(@member)
+  end
+
+  def unsubscribe
+    @member = current_member
+  end
+
   def withdrawal
     @member = Member.find(params[:id])
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
@@ -31,7 +34,7 @@ class Public::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name, :nickname, :favorite_alcohol)
+    params.require(:member).permit(:name, :nickname, :favorite_alcohol,:email,:is_deleted)
   end
 
 end

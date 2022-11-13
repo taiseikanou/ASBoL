@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       root to: "homes#top"
       post '/guests/guest_sign_in', to: 'guests#new_guest'
       resources :members,only:[:show,:update,:create,:edit,:index]do
-         resource :relationships, only: [:create, :destroy]
+         resource :relationships, only: [:create,:destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       end
@@ -34,8 +34,11 @@ Rails.application.routes.draw do
        resource :favorites, only: [:create, :destroy]
      end
      get "search" => "searches#search"
-     get 'members/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
-     patch 'members/withdraw' => 'members#withdraw', as: 'withdraw'
+     get '/member/:id/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
+     # 論理削除用のルーティング
+     patch '/member/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
+     resources :maps, only: [:index]
+
   end
 
 
