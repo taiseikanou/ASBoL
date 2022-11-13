@@ -5,7 +5,6 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-
   end
 
   def edit
@@ -17,6 +16,15 @@ class Public::MembersController < ApplicationController
       flash[:alert] = "もう一度入力してください。"
       render :edit
      end
+  end
+  
+  def withdrawal
+    @member = Member.find(params[:id])
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @member.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
 
