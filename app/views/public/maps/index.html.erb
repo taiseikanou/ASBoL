@@ -1,4 +1,10 @@
 <h2>gmap</h2>
+
+<input id="address" type="textbox" value="GeekSalon">
+<input type="button" value="Encode" onclick="codeAddress()">
+
+<div id="display">何かが表示される、、、、！</div>
+
 <div id='map'></div>
 
 <style>
@@ -22,6 +28,25 @@ function initMap(){
   marker = new google.maps.Marker({
     position:  {lat: 40.7828, lng:-73.9653},
     map: map
+  });
+}
+let geocoder
+const display = document.getElementById('display')
+
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      display.textContent = "検索結果：" + results[ 0 ].geometry.location
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
   });
 }
 </script>

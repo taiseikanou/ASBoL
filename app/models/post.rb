@@ -9,4 +9,6 @@ class Post < ApplicationRecord
   def self.looks(search, word)
     where("shop_name LIKE?","%#{word}%")
   end
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end
