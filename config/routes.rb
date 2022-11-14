@@ -29,7 +29,8 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       end
-      resources :posts, only: [:index,:show,:update,:create,:edit,:new]do
+      resources :posts, only: [:index,:show,:update,:create,:edit,:new,:destroy
+      ]do
        resources :post_comments, only: [:create]
        resource :favorites, only: [:create, :destroy]
      end
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
      # 論理削除用のルーティング
      patch '/member/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
 
- 
+
      resources :maps, only: [:index]
 
   end

@@ -8,6 +8,12 @@ class Public::PostsController < ApplicationController
     @post = Post.new
   end
 
+  def destroy
+    @post = Post.find(params[:id])  # データ（レコード）を1件取得
+    @post.destroy  # データ（レコード）を削除
+    redirect_to member_path(current_member)  # 投稿一覧画面へリダイレクト
+  end
+
   def edit
     @post = Post.find(params[:id])
   end
@@ -37,6 +43,6 @@ class Public::PostsController < ApplicationController
 
 
   def post_params
-    params.require(:post).permit(:explanation,:shop_name,:member_id,:image)
+    params.require(:post).permit(:explanation,:shop_name,:member_id,:image,:address)
   end
 end
