@@ -5,6 +5,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
+    @post = @member.posts
   end
 
   def edit

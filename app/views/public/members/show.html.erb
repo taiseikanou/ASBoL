@@ -1,39 +1,47 @@
-<% if current_member.following?(@member) %>
-  <%= link_to "フォロー外す", member_relationships_path(@member.id), method: :delete %>
-<% else %>
-  <%= link_to "フォローする", member_relationships_path(@member.id), method: :post %>
-<% end %>
 <div  class="container">
 
   <div class="row">
     <div class="col-md-5">
+
       <h3><span>マイページ</span></h3>
     </div>
   </div>
-
+   <% if current_member != @member %>
+     <%= render 'public/members/member',member: @member %>
+    <% else %>
+    <%= render 'public/members/mypage',member: @member %>
+    <% end %>
+</div>
+<div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col">
+      <h3>投稿一覧</h3>
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-active">お気に入りのお店</th></th>
+          <th class="table-active">説明</th>
+          <th class="table-active">画像</th>
 
-      <div class="row mt-1 ml-1">
-        <h5>登録情報</h5>
-        <span class="ml-3"><%= link_to "編集する", edit_member_path, class: "btn btn-outline-success btn-sm" %></span>
-      </div>
-      <div class="table-responsive-md mt-3">
-        <table class="table">
-          <tr>
-            <td class="bg-light" style="width:25%">氏名</td>
-            <td style="width:75%"><%= @member.name %> </td>
-          </tr>
-          <tr>
-            <td class="bg-light">ニックネーム</td>
-            <td><%= @member.nickname %> </td>
-          </tr>
-          <tr>
-            <td class="bg-light">メールアドレス</td>
-            <td><%= @member.email %></td>
-          </tr>
-        </table>
-      </div>
+        </tr>
+        <% @post.each do |posts| %>
+            <tr>
+              <td>
+                <% if posts.image.attached? %>
+                    <%= image_tag posts.image, size: "100x100" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "100x100" %>
+                  <% end %>
+                  <br>
+                  <%= link_to post_path(posts.id) do %>
+                  <span><%= posts.shop_name %></span>
+                  <% end %>
+              </td>
+              <td>
+               <%= posts.explanation %>
+              </td>
+            </tr>
+          <% end %>
+      </table>
     </div>
   </div>
 </div>

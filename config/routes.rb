@@ -37,6 +37,8 @@ Rails.application.routes.draw do
      get '/member/:id/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
      # 論理削除用のルーティング
      patch '/member/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
+
+ 
      resources :maps, only: [:index]
 
   end
