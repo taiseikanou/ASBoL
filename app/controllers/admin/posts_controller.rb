@@ -4,6 +4,11 @@ class Admin::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @member = @post.member_id
+    @post_comment = PostComment.new
+  end
+  def destroy
   end
 
   def post_params

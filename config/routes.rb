@@ -1,26 +1,12 @@
 Rails.application.routes.draw do
-
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
-  namespace :public do
-    get 'comments/index'
-    get 'comments/show'
-  end
-  namespace :admin do
-    get 'comments/index'
-    get 'comments/show'
-  end
   devise_for :members, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-
   devise_for :admin, controllers: {
-    sessions: "admin/sessions"
+    sessions: 'admin/sessions'
   }
+
   scope module: :public do
       root to: "homes#top"
       post '/guests/guest_sign_in', to: 'guests#new_guest'
@@ -29,6 +15,7 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       end
+      get 'posts/select'=>'posts#select',as: 'select'
       resources :posts, only: [:index,:show,:update,:create,:edit,:new,:destroy
       ]do
        resources :post_comments, only: [:create]
@@ -38,20 +25,17 @@ Rails.application.routes.draw do
      get '/member/:id/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
      # 論理削除用のルーティング
      patch '/member/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
-
-
      resources :maps, only: [:index]
-
+     get 'relationships/followings'
+     get 'relationships/followers'
   end
-
-
 
   namespace :admin do
       root to: "homes#top"
       resources :members,only:[:index,:show,:update,:create]do
       post '/guests/guest_sign_in', to: 'guests#new_guest'
     end
-    resources :posts, only: [:index,:show,:update,:create,:edit,:new]do
+    resources :posts, only: [:index,:show,:update,:create,:edit,:new,:destroy]do
        resources :post_comments, only: [:create]
        resource :favorites, only: [:create, :destroy]
     end

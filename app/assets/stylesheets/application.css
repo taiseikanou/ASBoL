@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+header {
+  background: url("top.jpg") no-repeat left center;
+  background-size: cover;
+}

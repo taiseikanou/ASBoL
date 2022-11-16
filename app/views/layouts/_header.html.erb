@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container">
 
 
@@ -16,7 +16,7 @@
           </li>
           <li>
             <%= link_to admin_posts_path, class: 'nav-link text-light' do %>
-              投稿一覧
+              <i class="fas fa-home"></i>
             <% end %>
           </li>
           <li>
@@ -30,27 +30,22 @@
         <% elsif member_signed_in? %>
           <li>
             <%= link_to member_path(current_member), class: 'nav-link text-light' do %>
-              マイページ
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_member_session_path, class: 'nav-link text-light' do %>
-              マップ
+              <i class="fas fa-user fa-2x"></i>
             <% end %>
           </li>
           <li>
             <%= link_to posts_path, class: 'nav-link text-light' do %>
-              投稿一覧
+              <i class="fas fa-home fa-2x"></i>
             <% end %>
           </li>
           <li>
             <%= link_to new_post_path, class: 'nav-link text-light' do %>
-              投稿する
+              <i class="fas fa-wine-glass-alt fa-2x"></i>
             <% end %>
           </li>
           <li>
             <%= link_to destroy_member_session_path, method: :delete, class: 'nav-link text-light' do %>
-              ログアウト
+             <i class="fas fa-sign-out-alt fa-2x "></i>
             <% end %>
           </li>
           <li>
@@ -59,7 +54,7 @@
         <% else %>
           <li>
             <%= link_to new_member_session_path, class: 'nav-link text-light' do %>
-              トップページ
+              <i class="fas fa-home"></i>
             <% end %>
           </li>
           <li>
