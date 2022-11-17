@@ -1,9 +1,26 @@
-<%= form_with model: @post, url: posts_path, method: :post do |f| %>
-  <h4>お気に入りのお店</h4>
-  <%= f.text_field :shop_name %>
-  <h4>説明</h4>
-  <%= f.text_area :explanation %>
-  <%= f.file_field :image, accept: "image/*" %>
-  <%= f.text_field :address, placeholder: "住所" %>
-  <%= f.submit '投稿' %>
-<% end %>
+<div class="contents_1p">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col mt-7 text-light">
+        <div class="mx-auto pt-5" style="width: 600px" style="margin-top: 50px;">
+          <h3>投稿する</h3>
+          <%= form_with model: @post, url: posts_path, method: :post do |f| %>
+            <div class="form-group">
+              <%= f.text_field :shop_name, placeholder:"お店の名前",size:"60*60" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_area :explanation,placeholder:"コメント",size:"60*60" %>
+            </div>
+            <div class="form-group">
+              <%= f.file_field :image, accept: "image/*" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :address, placeholder: "住所",size:"60*60" %>
+            </div>
+            <%= f.submit '投稿' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,8 @@ class Public::PostCommentsController < ApplicationController
     comment.save
     redirect_to request.referer
   end
+  
+
 
   private
 

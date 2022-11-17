@@ -1,47 +1,27 @@
-<div  class="container">
-
-  <div class="row">
-    <div class="col-md-5">
-
-      <h3><span>マイページ</span></h3>
+<div class="contents_1p">
+  <div  class="container text-light">
+    <div class="row">
+      <div class="col-md-5">
+        <h3>マイページ</h3>
+      </div>
     </div>
-  </div>
-   <% if current_member != @member %>
-     <%= render 'public/members/member',member: @member %>
+    <% if current_member != @member %>
+      <%= render 'public/members/member',member: @member %>
     <% else %>
-    <%= render 'public/members/mypage',member: @member %>
+      <%= render 'public/members/mypage',member: @member %>
     <% end %>
-</div>
-<div class="container">
+  </div>
   <div class="row">
-    <div class="col">
-      <h3>投稿一覧</h3>
-      <table class="table table-bordered">
-        <tr>
-          <th class="table-active">お気に入りのお店</th></th>
-          <th class="table-active">説明</th>
-          <th class="table-active">画像</th>
-
-        </tr>
-        <% @post.each do |posts| %>
-            <tr>
-              <td>
-                <% if posts.image.attached? %>
-                    <%= image_tag posts.image, size: "100x100" %>
-                  <% else %>
-                    <%= image_tag 'no_image', size: "100x100" %>
-                  <% end %>
-                  <br>
-                  <%= link_to post_path(posts.id) do %>
-                  <span><%= posts.shop_name %></span>
-                  <% end %>
-              </td>
-              <td>
-               <%= posts.explanation %>
-              </td>
-            </tr>
+    <% @post.each do |posts| %>
+      <div class="col-md-3-mx-2">
+        <p class="card-body text-center text-light">
+          <%= link_to post_path(posts.id) do %>
+            <%= image_tag posts.image, size: "230x230" %><br>
           <% end %>
-      </table>
-    </div>
+          <%= posts.shop_name %><br>
+          <%= posts.address %><br>
+        </p>
+      </div>
+    <%end%>
   </div>
 </div>

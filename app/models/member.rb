@@ -27,11 +27,15 @@ class Member < ApplicationRecord
     followings.include?(member)
    end
 
-  def self.looks(search, word)
-    where("nickname LIKE?","%#{word}%")
-  end
+
 
   def active_for_authentication?
     super && (is_deleted == false)
   end
+
+  def self.looks(search, word)
+      @member = Member.where("nickname LIKE?","%#{word}%")
+  end
+
+
 end

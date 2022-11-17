@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+header {
+  background-size: cover;
+  background-color:#000000;
+}
+.contents_1p {
+  height: 100vh;
+  width: 100%;
+  background-size: 100%;
+  background-color:#000000;
+}
+.contents_2p {
+  height: 100%;
+  width: 100%;
+  background-size: 100%;
+  background-color:#000000;
+}
