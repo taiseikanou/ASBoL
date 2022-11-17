@@ -1,5 +1,5 @@
 <div class="contents_1p">
-  <div  class="container">
+  <div  class="container text-light">
     <div class="row">
       <div class="col-md-5">
         <h3>マイページ</h3>
@@ -14,7 +14,7 @@
   <div class="row">
     <% @post.each do |posts| %>
       <div class="col-md-3-mx-2">
-        <p class="card-body text-center">
+        <p class="card-body text-center text-light">
           <%= link_to post_path(posts.id) do %>
             <%= image_tag posts.image, size: "230x230" %><br>
           <% end %>

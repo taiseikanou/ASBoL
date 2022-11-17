@@ -1,10 +1,10 @@
 <div class="contents_2p">
   <div class="container-fluid">
     <div class="row">
-      <div class="col mt-7">
+      <div class="col mt-7 text-light">
         <div class="mx-auto pt-5" style="width: 700px" style="margin-top: 50px;">
           <%= link_to member_path(@member) do %>
-            <%= @post.member.nickname %><br>
+            <h3><%= @post.member.nickname %></h3><br>
           <% end %>
           <%= image_tag @post.image, size: "700x400" %><br>
           <%= @post.shop_name %><br>
@@ -38,7 +38,33 @@
               <p class="card-text"><%= post_comment.comment %></p>
             </div>
           <% end %>
-          <%= render 'public/posts/map',post: @post %>
+          <div id='map'></div>
+          <style>
+          #map {
+            height: 500px;
+            width:800px;
+          }
+          </style>
+
+          <script>
+          let map
+
+          function initMap(){
+            var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: test,
+              zoom: 16
+            });
+
+            marker = new google.maps.Marker({
+              position: test,
+              map: map
+            });
+          }
+
+          </script>
+
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
         </div>
       </div>
     </div>
