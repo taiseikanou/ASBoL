@@ -1,12 +1,15 @@
-<div class="row">
-<% @posts.each do |posts| %>
-<div class="col-md-3-mx-2">
-<p class="card-body text-center">
-<%= link_to post_path(posts.id) do %>
-<%= image_tag posts.image, size: "230x230" %><br>
-<% end %>
-<%= posts.shop_name %><br>
-<%= posts.address %><br>
-</p>
+<div class="contents_1p">
+  <div class="row">
+    <% @posts.each do |posts| %>
+      <div class="col-md-3-mx-4">
+        <p class="card-body text-center">
+          <%= link_to post_path(posts.id) do %>
+            <%= image_tag posts.image, size: "230x230" %><br>
+          <% end %>
+          <%= posts.shop_name %><br>
+          <%= posts.address %><br>
+        </p>
+      </div>
+    <%end%>
+  </div>
 </div>
-<%end%>

@@ -1,6 +1,6 @@
 <span><%= @post.shop_name %></span>
 <%= link_to member_path(@member) do %>
-<%= @post.member.nickname %>
+  <%= @post.member.nickname %>
 <% end %>
 <%= @post.explanation %>
 <%= image_tag @post.image, size: "200x200" %>
