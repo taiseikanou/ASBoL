@@ -3,9 +3,13 @@ class Post < ApplicationRecord
   belongs_to :member
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+
   def favorited_by?(member)
-    favorites.exists?(member_id: member.id)
+    favorites.where(member_id: member).exists?
   end
+
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

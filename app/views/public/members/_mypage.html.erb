@@ -2,21 +2,31 @@
   <div class="col-md-8 text-light">
     <div class="row mt-1 ml-1 ">
       <h5>登録情報</h5>
-      <span class="ml-3"><%= link_to "編集する", edit_member_path, class: "btn btn-outline-success btn-sm" %></span>
+      <span class="ml-3">
+           <%= link_to "編集する", edit_member_path, class: "btn btn-outline-success btn-sm" %>
+           <%= link_to member_followings_path(member),class: 'text-light' do%>
+           フォロー数: <%= member.followings.count %>
+           <% end %>
+           <%= link_to member_followers_path(member),class: 'text-light' do%>
+           フォロワー数: <%= member.followers.count %>
+           <% end %>
+      </span>
     </div>
     <div class="table-responsive-md mt-3 ">
       <table class="table text-light">
         <tr>
-          <td class="bg-dark" style="width:25%">氏名</td>
+          <td  style="width:25%">氏名</td>
           <td style="width:75%"><%= member.name %> </td>
         </tr>
         <tr>
-          <td class="bg-dark">ニックネーム</td>
+          <td>ニックネーム</td>
           <td><%= member.nickname %> </td>
         </tr>
         <tr>
-          <td class="bg-dark">メールアドレス</td>
+          <td>メールアドレス</td>
           <td><%= member.email %></td>
+        </tr>
+        <tr>
         </tr>
       </table>
     </div>

@@ -48,9 +48,7 @@ ActiveRecord::Schema.define(version: 2022_11_09_235921) do
     t.datetime "remember_created_at"
     t.string "nickname"
     t.string "name"
-    t.string "favorite_alcohol"
     t.text "introduction"
-    t.integer "member_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
@@ -80,12 +78,11 @@ ActiveRecord::Schema.define(version: 2022_11_09_235921) do
     t.datetime "remember_created_at"
     t.string "nickname", null: false
     t.string "name", null: false
-    t.string "favorite_alcohol"
     t.text "introduction"
     t.integer "member_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_deleted", default: false
+    t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end

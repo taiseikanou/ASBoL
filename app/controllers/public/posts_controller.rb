@@ -3,7 +3,9 @@ class Public::PostsController < ApplicationController
     @post = Post.new
     @posts = Post.all
   end
-
+  def favoritepost
+  @bookmarks = Favorite.where(member_id: current_member.id)
+  end
   def new
     @post = Post.new
   end
@@ -11,7 +13,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])  # データ（レコード）を1件取得
     @post.destroy  # データ（レコード）を削除
-    redirect_to member_path(current_member)  # 投稿一覧画面へリダイレクト
+    redirect_to admin_posts_path  # 投稿一覧画面へリダイレクト
   end
 
   def edit

@@ -16,9 +16,10 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
       end
       get 'posts/select'=>'posts#select',as: 'select'
+      get 'posts/favoritepost' => 'posts#favoritepost', as: 'favoritepost'
       resources :posts, only: [:index,:show,:update,:create,:edit,:new,:destroy
       ]do
-       resources :post_comments, only: [:create]
+       resources :post_comments, only: [:create,:destroy]
        resource :favorites, only: [:create, :destroy]
      end
      get "search" => "searches#search"
@@ -26,19 +27,16 @@ Rails.application.routes.draw do
      # 論理削除用のルーティング
      patch '/member/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
      resources :maps, only: [:index]
-     get 'relationships/followings'
-     get 'relationships/followers'
-  end
+     end
 
   namespace :admin do
-      root to: "homes#top"
-      resources :members,only:[:index,:show,:update,:create]do
-      post '/guests/guest_sign_in', to: 'guests#new_guest'
+    root to: "homes#top"
+    post '/guests/guest_sign_in', to: 'guests#new_guest'
+    resources :members,only:[:index,:show,:update,:create,:edit]do
     end
-    resources :posts, only: [:index,:show,:update,:create,:edit,:new,:destroy]do
-       resources :post_comments, only: [:create]
-       resource :favorites, only: [:create, :destroy]
+    resources :posts, only: [:index,:show,:update,:create,:edit,:destroy]do
+      resources :post_comments, only: [:create,:destroy]
     end
     get "search" => "searches#search"
-  end
+    end
 end

@@ -16,6 +16,6 @@ class Public::RelationshipsController < ApplicationController
     # フォロワー一覧
   def followers
       member = Member.find(params[:member_id])
-      @member = member.followers
+      @members = member.followers
   end
 end

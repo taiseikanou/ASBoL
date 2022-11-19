@@ -32,10 +32,11 @@ class Public::MembersController < ApplicationController
   end
 
 
+
   private
 
   def member_params
-    params.require(:member).permit(:name, :nickname, :favorite_alcohol,:email,:is_deleted)
+    params.require(:member).permit(:name, :nickname,:email,:is_deleted)
   end
 
 end
