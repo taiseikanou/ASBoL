@@ -15,13 +15,13 @@
           <% end %>
           <% if @post.favorited_by?(current_member) %>
             <p>
-              <%= link_to post_favorites_path(@post), method: :delete do %>
+              <%= link_to post_favorites_path(@post), method: :delete, remote: true do %>
                 ♥<%= @post.favorites.count %> いいね
               <% end %>
             </p>
           <% else %>
             <p>
-              <%= link_to post_favorites_path(@post), method: :post do %>
+              <%= link_to post_favorites_path(@post), method: :post do, remote: true do %>
                 ♡<%= @post.favorites.count %> いいね
               <% end %>
             </p>

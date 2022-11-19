@@ -17,11 +17,12 @@
         <td><%= member.nickname %></td>
         <td><%= member.email %></td>
         <% if member.member_status == "true" %>
-         <td>有効</td>
+          <td>有効</td>
         <% else member.member_status == "false" %>
-         <td>退会</td>
+          <td>退会</td>
         <% end %>
-      </tr>
+    </tr>
     <% end %>
   </table>
+
 </div>
