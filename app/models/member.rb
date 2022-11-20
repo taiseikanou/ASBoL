@@ -30,7 +30,7 @@ class Member < ApplicationRecord
 
 
   def active_for_authentication?
-    super && (is_deleted == false)
+    super && (member_status == false)
   end
 
   def self.looks(search, word)

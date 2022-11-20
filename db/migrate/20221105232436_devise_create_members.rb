@@ -34,9 +34,8 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string  :nickname        ,null:false
       t.string  :name            ,null: false
       t.text    :introduction
-      t.integer :member_status    ,null: false, default: 0
+      t.boolean :member_status   ,default: false,null: false
       t.timestamps               null: false
-      t.boolean :is_deleted	      ,default: false,null: false
     end
 
     add_index :members, :email,                unique: true
