@@ -1,0 +1,28 @@
+<div class="contents_1p">
+  <table class="table table-hover table-inverse text-light">
+  <!--検索対象モデルがUserの時 -->
+    <% if @range == "会員" %>
+      <tbody>
+        <% @members.each do |member| %>
+          <tr>
+            <td><%= member.nickname %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% else %>
+      <div class="row">
+        <% @posts.each do |posts| %>
+          <div class="col-md-3-mx-2">
+            <p class="card-body text-center text-light">
+              <%= link_to post_path(posts.id) do %>
+                <%= image_tag posts.image, size: "230x230" %><br>
+              <% end %>
+              <%= posts.shop_name %><br>
+              <%= posts.address %><br>
+            </p>
+          </div>
+        <%end %>
+      </div>
+    <% end %>
+  </table>
+</div>
