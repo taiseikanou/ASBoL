@@ -4,6 +4,8 @@ class Admin::MembersController < ApplicationController
   end
 
   def show
+    @member = Member.find(params[:id])
+    @post = @member.posts
   end
 
   def edit

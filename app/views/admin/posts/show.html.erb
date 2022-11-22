@@ -11,19 +11,6 @@
           <%= @post.explanation %><br>
             <span class="ml-3"><%= link_to "編集する", edit_admin_post_path, class: "btn btn-outline-success btn-sm" %></span>
             <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-          <% if @post.favorited_by?(current_member) %>
-            <p>
-              <%= link_to post_favorites_path(@post), method: :delete do %>
-                ♥<%= @post.favorites.count %> いいね
-              <% end %>
-            </p>
-          <% else %>
-            <p>
-              <%= link_to post_favorites_path(@post), method: :post do %>
-                ♡<%= @post.favorites.count %> いいね
-              <% end %>
-            </p>
-          <% end %>
           <%= form_with model: [@post, @post_comment] do |f| %>
             <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに",size: "90x5" %>
             <%= f.submit "送信する" %>
