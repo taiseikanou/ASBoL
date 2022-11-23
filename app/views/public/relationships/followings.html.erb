@@ -1,15 +1,15 @@
 <% if @members.exists? %>
 <div class="container px-5 py-4">
-  <div class="row align-items-center justify-content-between">
-    <h4 class="col-3">会員一覧</h4>
+  <div class="row align-items-center justify-content-between text-light">
+    <h5 class="col-3">会員一覧</h4>
   </div>
-  <table class="table table-hover table-inverse cart_products">
+  <table class="table table-hover table-inverse cart_products text-light">
     <tr>
-      <th class="table-secondary">ユーザー名</th>
-      <th class="table-secondary"></th></th>
+      <th class="table-Default">ユーザー名</th>
+      <th class="table-Default"></th></th>
     </tr>
     <% @members.each do |member| %>
-      <tr>
+      <tr >
         <td><%= member.name %></td>
         <td>投稿一覧</td>
     　</tr>
@@ -17,5 +17,5 @@
   </table>
 </div>
 <% else %>
-<h1 class = "text-center" style= "margin-top:200px;">ユーザーがいません</h1>
+  <h1 class = "text-center" style= "margin-top:200px;">ユーザーがいません</h1>
 <% end %>

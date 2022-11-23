@@ -17,17 +17,19 @@ header {
   background-size: cover;
   background-color:#000000;
 }
-.contents_1p {
-  height: 100%;
-  width: 100%;
-  background-size: 100%;
-  background-color:#000000;
-}
-.contents_2p {
-  height: 100%;
-  width: 100%;
-  background-size: 100%;
-  background-color:#000000;
-}
 
 
+html,body {
+  height: 100%;
+}
+
+body:after {/*擬似要素をつくる*/
+  position: fixed;/*固定配置*/
+  top: 0; left: 0;/*左上に固定*/
+  width: 100%;
+  height: 100%;/*画面全体を覆う*/
+  content: "";
+  background: #000000;/*保険用*/
+
+  z-index: -1;
+}
