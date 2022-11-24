@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       end
       get 'posts/select'=>'posts#select',as: 'select'
       get 'posts/favoritepost' => 'posts#favoritepost', as: 'favoritepost'
+      get '/posts/:id/post_comment' => 'posts#post_comment', as: 'post_comment'
       resources :posts, only: [:index,:show,:update,:create,:edit,:new,:destroy
       ]do
        resources :post_comments, only: [:create,:destroy]

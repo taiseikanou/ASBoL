@@ -10,6 +10,9 @@
            <%= link_to member_followers_path(member),class: 'text-light' do%>
            フォロワー数: <%= member.followers.count %>
            <% end %>
+           <%= link_to favoritepost_path,class: 'text-light' do%>
+           いいねをした投稿
+           <% end %>
       </span>
     </div>
     <div class="table-responsive-md mt-3 ">

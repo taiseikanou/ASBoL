@@ -3,9 +3,11 @@ class Public::PostsController < ApplicationController
     @post = Post.new
     @posts = Post.all
   end
+  
   def favoritepost
-  @bookmarks = Favorite.where(member_id: current_member.id)
+  @favorites = Favorite.where(member_id: current_member.id)
   end
+  
   def new
     @post = Post.new
   end

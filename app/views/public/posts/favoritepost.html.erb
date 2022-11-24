@@ -1,23 +1,13 @@
-<table>
-  <caption>ブックマーク一覧</caption>
-  <thead>
-    <tr>
-      <th>投稿者名</th>
-      <th>タイトル</th>
-      <th>本文</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <td><%= bookmark.post.member.name %></td>
-        <td>
-          <%= link_to post_path(bookmark.post) do %>
-            <%= bookmark.post.title %>
-          <% end %>
-        </td>
-        <td><%= bookmark.post.body %></td>
-      </tr>
+<div class="row">
+    <div class="col-md-3-mx-4 mx-auto">
+      <p class="card-body text-center text-light mx-auto">
+    <% @favorites.each do |bookmark| %>
+      <%= link_to post_path(bookmark.post) do %>
+          <%= image_tag bookmark.post.image, size: "230x230" %><br>
+      <% end %>
+      <%= bookmark.post.shop_name %><br>
+      <%= bookmark.post.address %><br>
     <% end %>
-  </tbody>
-</table>
+    </p>
+    </div>
+</div>

@@ -27,7 +27,8 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     member = Member.guest
     sign_in member
-    redirect_to root_path, notice: 'guestuserでログインしました。'
+    redirect_to root_path
+    flash[:success] = "ログインしました"
   end
 
   def reject_user
@@ -41,4 +42,13 @@ class Public::SessionsController < Devise::SessionsController
       end
     end
   end
+
+
+
+
+
+
+
+
+
 end
