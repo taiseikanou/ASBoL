@@ -3,16 +3,18 @@
     <div class="row mt-1 ml-1 ">
       <h5>登録情報</h5>
       <span class="ml-3">
+        <% if member.id =! 1 %>
            <%= link_to "編集する", edit_member_path, class: "btn btn-outline-success btn-sm" %>
-           <%= link_to member_followings_path(member),class: 'text-light' do%>
-           フォロー数: <%= member.followings.count %>
-           <% end %>
-           <%= link_to member_followers_path(member),class: 'text-light' do%>
-           フォロワー数: <%= member.followers.count %>
-           <% end %>
-           <%= link_to favoritepost_path,class: 'text-light' do%>
-           いいねをした投稿
-           <% end %>
+        <% end %>
+        <%= link_to member_followings_path(member),class: 'text-light' do%>
+        フォロー数: <%= member.followings.count %>
+        <% end %>
+        <%= link_to member_followers_path(member),class: 'text-light' do%>
+        フォロワー数: <%= member.followers.count %>
+        <% end %>
+        <%= link_to favoritepost_path,class: 'text-light' do%>
+        いいねをした投稿
+        <% end %>
       </span>
     </div>
     <div class="table-responsive-md mt-3 ">

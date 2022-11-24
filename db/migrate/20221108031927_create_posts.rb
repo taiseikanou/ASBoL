@@ -7,7 +7,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.float :latitude
       t.float :longitude
       t.string :address
-
+      t.string :category
       t.timestamps
     end
   end
