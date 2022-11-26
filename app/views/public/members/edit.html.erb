@@ -3,6 +3,9 @@
     <div class="row">
       <div class="col mt-8 ">
         <div class="mx-auto pt-5" style="width: 600px" style="margin-top: 50px;">
+    <% if @member.email == 'guest@example.com'%>
+     <h3>ゲストユーザーは編集できません</h3>
+    <% else %>
       <h3>会員情報編集</h3>
     <%= form_with model: @member, url: member_path do |f| %>
       <div class="form-group row">
@@ -21,6 +24,7 @@
         <%= f.submit "編集内容を保存", class: "btn btn-outline-primary btn-sm" %>
       </div>
         <%= link_to "退会する", unsubscribe_path(@member), class: "btn btn-outline-danger btn-sm" %>
+    <% end %>
     <% end %>
        </div>
       </div>

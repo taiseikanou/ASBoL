@@ -3,9 +3,7 @@
     <div class="row mt-1 ml-1 ">
       <h5>登録情報</h5>
       <span class="ml-3">
-        <% if member.id =! 1 %>
            <%= link_to "編集する", edit_member_path, class: "btn btn-outline-success btn-sm" %>
-        <% end %>
         <%= link_to member_followings_path(member),class: 'text-light' do%>
         フォロー数: <%= member.followings.count %>
         <% end %>

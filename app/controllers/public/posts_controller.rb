@@ -1,15 +1,15 @@
 class Public::PostsController < ApplicationController
   def index
-    @post = Post.new
     @posts = Post.all
   end
-  
+
   def favoritepost
   @favorites = Favorite.where(member_id: current_member.id)
   end
-  
+
   def new
     @post = Post.new
+    @category = params[:category]
   end
 
   def destroy
@@ -47,6 +47,6 @@ class Public::PostsController < ApplicationController
 
 
   def post_params
-    params.require(:post).permit(:explanation,:shop_name,:member_id,:image,:address,:category)
+    params.require(:post).permit(:comment,:shop_name,:member_id,:image,:address,:category,:genre,:asbol)
   end
 end

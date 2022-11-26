@@ -16,9 +16,10 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
       end
       get 'posts/select'=>'posts#select',as: 'select'
+      get 'posts/new/:category' => 'posts#new'
       get 'posts/favoritepost' => 'posts#favoritepost', as: 'favoritepost'
       get '/posts/:id/post_comment' => 'posts#post_comment', as: 'post_comment'
-      resources :posts, only: [:index,:show,:update,:create,:edit,:new,:destroy
+      resources :posts, only: [:index,:show,:update,:create,:edit,:destroy
       ]do
        resources :post_comments, only: [:create,:destroy]
        resource :favorites, only: [:create, :destroy]

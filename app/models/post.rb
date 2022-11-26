@@ -17,4 +17,7 @@ class Post < ApplicationRecord
     @post = Post.where("shop_name LIKE?","%#{word}%")
   end
 
+enum genre: { ビール:1, ワイン:2, 日本酒:3,カクテル:4,ウイスキー:5,焼酎:6,その他:7 }
+
+
 end

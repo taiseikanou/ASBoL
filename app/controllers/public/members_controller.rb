@@ -5,7 +5,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @post = @member.posts
+    @posts = @member.posts
   end
 
   def edit
