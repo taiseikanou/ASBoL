@@ -20,7 +20,7 @@
       <div class="form-group row d-flex">
         <%= f.submit "編集内容を保存", class: "btn btn-outline-primary btn-sm" %>
       </div>
-        <%= link_to "退会する", unsubscribe_path(@member), class: "btn btn-outline-danger btn-sm" %>
+        <%= link_to "退会させる", admin_withdrawal_path(@member), method: :patch, data: { confilm: "本当に退会させますか？" } %>
     <% end %>
        </div>
       </div>

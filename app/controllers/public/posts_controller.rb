@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_member!
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def favoritepost
@@ -20,6 +21,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+
   end
 
   def update
@@ -32,10 +34,16 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.member_id = current_member.id
     @post.save
-    redirect_to request.referer
+    redirect_to post_path(@post)
   end
 
   def show
+    @post = Post.find(params[:id])
+    @member = @post.member_id
+    @post_comment = PostComment.new
+  end
+
+  def post_comment
     @post = Post.find(params[:id])
     @member = @post.member_id
     @post_comment = PostComment.new

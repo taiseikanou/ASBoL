@@ -1,4 +1,5 @@
-class Public::RelationshipsController < ApplicationController
+class Public::RelationshipsController < ApplicationCo
+  before_action :authenticate_member!
   def create
       current_member.follow(params[:member_id])
       redirect_to request.referer

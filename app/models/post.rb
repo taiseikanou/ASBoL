@@ -13,9 +13,16 @@ class Post < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+
   def self.looks(search, word)
-    @post = Post.where("shop_name LIKE?","%#{word}%")
+    @posts = Post.where("shop_name LIKE?","%#{word}%")
   end
+
+  def self.looks(search, word)
+    @plases = Post.where("address LIKE?","%#{word}%")
+  end
+
+
 
 enum genre: { ビール:1, ワイン:2, 日本酒:3,カクテル:4,ウイスキー:5,焼酎:6,その他:7 }
 

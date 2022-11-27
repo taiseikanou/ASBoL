@@ -40,5 +40,8 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create,:destroy]
     end
     get "search" => "searches#search"
+    get '/member/:id/unsubscribe' => 'members#unsubscribe', as: 'unsubscribe'
+     # 論理削除用のルーティング
+    patch '/member/:id/withdrawal' => 'members#withdrawal', as: 'withdrawal'
     end
 end
