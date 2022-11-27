@@ -6,7 +6,7 @@ class Public::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @posts = @member.posts
+    @posts = @member.posts.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit

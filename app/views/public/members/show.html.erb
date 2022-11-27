@@ -1,4 +1,3 @@
-<div class="contents_1p">
   <div  class="container text-light">
     <div class="row">
       <div class="col-md-5">
@@ -11,21 +10,5 @@
       <%= render 'public/members/mypage',member: @member %>
     <% end %>
   </div>
-  <div class="row ml-5">
-    <% @posts.each do |posts| %>
-      <div class="col-md-5-mx-5">
-        <p class="card-body text-center text-light">
-          <%= link_to post_path(posts.id) do %>
-            <%= image_tag posts.image, size: "300x300" %><br>
-          <% end %>
-          <% if posts.asbol=="shop_name" %>
-          <%= posts.shop_name %><br>
-          <%= posts.address %><br>
-          <% elsif posts.asbol=="alcohol" %>
-          <%= posts.comment %><br>
-          <% end %>
-        </p>
-      </div>
-    <%end%>
-  </div>
-</div>
+  <%= render 'public/posts/list',posts: @posts %>
+  

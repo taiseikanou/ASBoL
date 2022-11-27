@@ -33,3 +33,7 @@ body:after {/*擬似要素をつくる*/
 
   z-index: -1;
 }
+
+.pagination {
+  justify-content: center;
+}
