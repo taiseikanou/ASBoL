@@ -1,15 +1,21 @@
-<div class="row">
+<div class="row ml-5">
   <% @favorites.each do |bookmark| %>
-　　<div class="col-md-3-mx-2">
+　  <div class="col-md-5-mx-5">
         <p class="card-body text-center text-light">
-      <%= link_to post_path(bookmark.post) do %>
-          <%= image_tag bookmark.post.image, size: "230x230" %><br>
-      <% end %>
-      <%= bookmark.post.shop_name %><br>
-      <%= bookmark.post.address %><br>
-
-
-    </p>
+        <%= link_to post_path(bookmark.post) do %>
+            <%= image_tag bookmark.post.image, size: "230x230" %><br>
+        <% end %>
+        <% if bookmark.post.asbol=="shop_name" %>
+          <%= bookmark.post.name %><br>
+          <%= bookmark.post.address %><br>
+        <% elsif bookmark.posts.asbol=="alcohol" %>
+          <%= posts.name %><br>
+        <% end %>
+      </p>
     </div>
-    <% end %>
+  <% end %>
 </div>
+
+
+
+

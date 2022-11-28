@@ -93,9 +93,7 @@ ActiveRecord::Schema.define(version: 2022_11_09_235921) do
 
   create_table "posts", force: :cascade do |t|
     t.text "comment"
-    t.integer "genre"
-    t.integer "atmosphere"
-    t.string "shop_name"
+    t.string "name", null: false
     t.integer "member_id"
     t.float "latitude"
     t.float "longitude"

@@ -11,7 +11,11 @@
     <% @members.each do |member| %>
       <tr >
         <td><%= member.name %></td>
-        <td>投稿一覧</td>
+        <td>
+          <%= link_to member_path(member.id) do %>
+          投稿一覧
+          <% end %>
+        </td>
     　</tr>
     <% end %>
   </table>

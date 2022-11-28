@@ -14,9 +14,12 @@ class Public::MembersController < ApplicationController
   end
 
   def update
-     @member = current_member
-     @member.update(member_params)
+    if @member.update(member_params)
      redirect_to member_path(@member)
+    else
+      flash[:notice] = "記入していない欄があるため、投稿できません"
+      
+    end
   end
 
   def unsubscribe

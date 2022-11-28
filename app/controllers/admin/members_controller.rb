@@ -6,7 +6,7 @@ class Admin::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @post = @member.posts
+    @posts = @member.posts.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit
@@ -17,9 +17,8 @@ class Admin::MembersController < ApplicationController
     @member = Member.find(params[:id])
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     if @member.member_status==false
-    @member.update(member_status: "true")
-    reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+      @member.update(member_status: "true")
+      flash[:notice] = "退会処理を実行いたしました"
     redirect_to request.referer
     elsif @member.member_status==true
       @member.update(member_status: "false")
@@ -28,12 +27,6 @@ class Admin::MembersController < ApplicationController
       redirect_to request.referer
     end
   end
-
-  def unsubscribe
-    @member = current_member
-  end
-
-
 
 
   private

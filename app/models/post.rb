@@ -3,6 +3,9 @@ class Post < ApplicationRecord
   belongs_to :member
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  validates :name, presence: true
+  validates :image, presence: true
+  validates :comment, presence: true
 
 
   def favorited_by?(member)
@@ -15,16 +18,11 @@ class Post < ApplicationRecord
 
 
   def self.looks(search, word)
-    @posts = Post.where("shop_name LIKE?","%#{word}%")
-  end
-
-  def self.looks(search, word)
-    @plases = Post.where("address LIKE?","%#{word}%")
+    @posts = Post.where("name LIKE?","%#{word}%")
   end
 
 
 
-enum genre: { ビール:1, ワイン:2, 日本酒:3,カクテル:4,ウイスキー:5,焼酎:6,その他:7 }
 
 
 end

@@ -5,7 +5,7 @@ class Public::PostsController < ApplicationController
   end
 
   def favoritepost
-  @favorites = Favorite.where(member_id: current_member.id)
+    @favorites = Favorite.where(member_id: current_member.id)
   end
 
   def new
@@ -14,9 +14,9 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])  # データ（レコード）を1件取得
-    @post.destroy  # データ（レコード）を削除
-    redirect_to admin_posts_path  # 投稿一覧画面へリダイレクト
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to admin_posts_path
   end
 
   def edit
@@ -33,8 +33,12 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.member_id = current_member.id
-    @post.save
-    redirect_to post_path(@post)
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      flash[:notice] = "記入していない欄があるため、投稿できません"
+      redirect_to request.referer
+    end
   end
 
   def show
@@ -55,6 +59,6 @@ class Public::PostsController < ApplicationController
 
 
   def post_params
-    params.require(:post).permit(:comment,:shop_name,:member_id,:image,:address,:category,:genre,:asbol)
+    params.require(:post).permit(:comment,:name,:member_id,:image,:address,:category,:asbol,:name)
   end
 end

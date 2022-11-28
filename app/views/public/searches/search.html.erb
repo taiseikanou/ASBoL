@@ -1,53 +1,41 @@
-<!--検索対象モデルがUserの時 -->
-    <% if @range == "会員" %>
-    <div class="container px-5 py-4">
-  <div class="row align-items-center justify-content-between text-light">
-    <h5 class="col-3">会員一覧</h4>
-  </div>
-  <table class="table table-hover table-inverse cart_products text-light">
-    <tr>
-      <th class="table-Default">ユーザー名</th>
-      <th class="table-Default"></th></th>
-    </tr>
-    <% @members.each do |member| %>
-      <tr >
-        <td><%= member.name %></td>
-        <td>
-          <%= link_to member_path(member.id) do %>
-          投稿一覧</td>
-          <% end %>
+<% if @range == "会員" %>
+  <div class="container px-5 py-4">
+    <div class="row align-items-center justify-content-between text-light">
+      <h4 class="col-3">会員一覧</h4>
+    </div>
+    <table class="table table-hover table-inverse cart_products text-light">
+      <tr>
+        <th class="table-Default">ユーザー名</th>
+        <th class="table-Default"></th></th>
+      </tr>
+      <% @members.each do |member| %>
+        <tr>
+          <td><%= member.name %></td>
+          <td>
+            <%= link_to member_path(member.id) do %>
+              投稿一覧</td>
+            <% end %>
           </td>
-    　</tr>
-    <% end %>
-  </table>
+        </tr>
+      <% end %>
+    </table>
 </div>
-    <% elsif @range == "投稿" %>
-      <div class="row">
-        <% @posts.each do |posts| %>
-          <div class="col-md-3-mx-2">
-            <p class="card-body text-center text-light">
-              <%= link_to post_path(posts.id) do %>
-                <%= image_tag posts.image, size: "230x230" %><br>
-              <% end %>
-              <%= posts.shop_name %><br>
-              <%= posts.address %><br>
-            </p>
-          </div>
-        <%end %>
+<% elsif @range == "投稿" %>
+  <div class="row ml-5">
+    <% @posts.each do |posts| %>
+      <div class="col-md-5-mx-5">
+        <p class="card-body text-center text-light">
+          <%= link_to post_path(posts.id) do %>
+            <%= image_tag posts.image, size: "230x230" %><br>
+          <% end %>
+          <% if posts.asbol=="shop_name" %>
+          <%= posts.name %><br>
+          <%= posts.address %><br>
+          <% elsif posts.asbol=="alcohol" %>
+          <%= posts.name %><br>
+          <% end %>
+        </p>
       </div>
-    <% else %>
-      <div class="row">
-        <% @plases.each do |posts| %>
-          <div class="col-md-3-mx-2">
-            <p class="card-body text-center text-light">
-              <%= link_to post_path(posts.id) do %>
-                <%= image_tag posts.image, size: "230x230" %><br>
-              <% end %>
-              <%= posts.shop_name %><br>
-              <%= posts.address %><br>
-            </p>
-          </div>
-        <%end %>
-      </div>
-    <% end %>
-
+    <%end%>
+  </div>
+<% end %>

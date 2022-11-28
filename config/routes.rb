@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     post '/guests/guest_sign_in', to: 'guests#new_guest'
     resources :members,only:[:index,:show,:update,:create,:edit]do
     end
+    get '/posts/:id/post_comment' => 'posts#post_comment', as: 'post_comment'
     resources :posts, only: [:index,:show,:update,:create,:edit,:destroy]do
       resources :post_comments, only: [:create,:destroy]
     end

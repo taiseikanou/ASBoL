@@ -1,27 +1,29 @@
 <div class="background">
   <div class="container-fluid">
     <div class="row">
-      <div class="col mt-8 ">
+      <div class="col mt-5 ml-5 ">
         <div class="mx-auto pt-5" style="width: 600px" style="margin-top: 50px;">
-      <h3>会員情報編集</h3>
-    <%= form_with model: @member, url: member_path do |f| %>
-      <div class="form-group row">
-        <%= f.label :"氏名", class: "col-md-3" %>
-        <%= f.text_field :name,size:"30*30" %>
-      </div>
-      <div class="form-group row">
-        <%= f.label :"ニックネーム", class: "col-md-3" %>
-        <%= f.text_field :nickname,size:"30*30" %>
-      </div>
-      <div class="form-group row">
-        <%= f.label :"メールアドレス", class: "col-md-3" %>
-        <%= f.text_field :email,size:"30*30" %>
-      </div>
-      <div class="form-group row d-flex">
-        <%= f.submit "編集内容を保存", class: "btn btn-outline-primary btn-sm" %>
-      </div>
-        <%= link_to "退会させる", admin_withdrawal_path(@member), method: :patch, data: { confilm: "本当に退会させますか？" } %>
-    <% end %>
+          <h3>会員情報編集</h3>
+          <%= form_with model: @member, url: member_path do |f| %>
+            <div class="form-group row">
+              <%= f.label :"氏名", class: "col-md-3" %>
+              <%= f.text_field :name,size:"30*30" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :"ニックネーム", class: "col-md-3" %>
+              <%= f.text_field :nickname,size:"30*30" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label :"メールアドレス", class: "col-md-3" %>
+              <%= f.text_field :email,size:"30*20" %>
+            </div>
+            <div class="form-group row">
+            <p class="text-right mx-auto">
+              <%= f.submit "編集内容を保存", class: "btn btn-success btn-sm" %>
+              <%= link_to "退会させる", admin_withdrawal_path(@member), method: :patch,class: "btn btn-danger btn-sm",data: { confilm: "本当に退会させますか？" } %>
+            </p>
+            </div>
+          <% end %>
        </div>
       </div>
     </div>
