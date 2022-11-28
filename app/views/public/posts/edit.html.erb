@@ -17,7 +17,7 @@
             <%= f.text_field :address, placeholder: "住所",size:"60*60" %>
           </div>
           <%= f.hidden_field :asbol, :value =>"shop_name" %>
-          <%= f.submit '投稿' %>
+          <%= f.submit '編集を保存する' %>
         <% end %>
       <% elsif @post.asbol=='alcohol' %>
         <h3>宅飲み</h3>
@@ -32,7 +32,7 @@
             <%= f.text_area :comment,placeholder:"コメント",size:"60*60" %>
           </div>
           <%= f.hidden_field :asbol, :value =>"alcohol" %>
-          <%= f.submit '投稿' %>
+          <%= f.submit '編集を保存する' %>
         <% end %>
       <% end %>
     </div>
