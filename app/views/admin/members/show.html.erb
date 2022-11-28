@@ -4,36 +4,36 @@
         <h3>会員詳細</h3>
       </div>
     </div>
-<div class="row">
-  <div class="col-md-8 text-light">
-    <div class="row mt-1 ml-1 ">
-      <h5>登録情報</h5>
-      <span class="ml-3">
-           <%= link_to "編集する", edit_admin_member_path, class: "btn btn-outline-success btn-sm" %>
-           フォロー数: <%= @member.followings.count %>
-           フォロワー数: <%= @member.followers.count %>
-      </span>
-    </div>
-    <div class="table-responsive-md mt-3 ">
-      <table class="table text-light">
-        <tr>
-          <td  style="width:25%">氏名</td>
-          <td style="width:75%"><%= @member.name %> </td>
-        </tr>
-        <tr>
-          <td>ニックネーム</td>
-          <td><%= @member.nickname %> </td>
-        </tr>
-        <tr>
-          <td>メールアドレス</td>
-          <td><%= @member.email %></td>
-        </tr>
-        <tr>
-        </tr>
-      </table>
+  <div class="row">
+    <div class="col-md-8 text-light">
+      <div class="row mt-1 ml-1 ">
+        <h5>登録情報</h5>
+        <span class="ml-3">
+             <%= link_to "編集する", edit_admin_member_path, class: "btn btn-outline-success btn-sm" %>
+             フォロー数: <%= @member.followings.count %>
+             フォロワー数: <%= @member.followers.count %>
+        </span>
+      </div>
+      <div class="table-responsive-md mt-3 ">
+        <table class="table text-light">
+          <tr>
+            <td  style="width:25%">氏名</td>
+            <td style="width:75%"><%= @member.name %> </td>
+          </tr>
+          <tr>
+            <td>ニックネーム</td>
+            <td><%= @member.nickname %> </td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @member.email %></td>
+          </tr>
+          <tr>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 </div>
  <%= render 'admin/posts/list',posts: @posts %>
 </div>

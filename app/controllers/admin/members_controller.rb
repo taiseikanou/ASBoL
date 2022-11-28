@@ -15,7 +15,6 @@ class Admin::MembersController < ApplicationController
 
   def withdrawal
     @member = Member.find(params[:id])
-    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     if @member.member_status==false
       @member.update(member_status: "true")
       flash[:notice] = "退会処理を実行いたしました"

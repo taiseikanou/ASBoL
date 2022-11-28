@@ -1,9 +1,5 @@
 class Public::MembersController < ApplicationController
-  
-  def index
-    @member = current_member
-  end
-
+  before_action :authenticate_member!
   def show
     @member = Member.find(params[:id])
     @posts = @member.posts.page(params[:page]).per(10).order(created_at: :desc)
@@ -15,7 +11,7 @@ class Public::MembersController < ApplicationController
 
   def update
     if @member.update(member_params)
-     redirect_to member_path(@member)
+      redirect_to member_path(@member)
     else
       flash[:notice] = "記入していない欄があるため、投稿できません"
       
