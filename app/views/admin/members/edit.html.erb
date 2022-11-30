@@ -20,7 +20,11 @@
             <div class="form-group row">
             <p class="text-right mx-auto">
               <%= f.submit "編集内容を保存", class: "btn btn-success btn-sm" %>
-              <%= link_to "退会させる", admin_withdrawal_path(@member), method: :patch,class: "btn btn-danger btn-sm",data: { confilm: "本当に退会させますか？" } %>
+              <% if @member.member_status == false %>
+                <%= link_to "退会させる", admin_withdrawal_path(@member), method: :patch,class: "btn btn-danger btn-sm",data: { confilm: "本当に退会させますか？" } %>
+              <% else %>
+                <%= link_to "入会させる", admin_withdrawal_path(@member), method: :patch,class: "btn btn-danger btn-sm",data: { confilm: "本当に入会させますか？" } %>
+              <% end %>
             </p>
             </div>
           <% end %>

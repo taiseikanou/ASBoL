@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col mt-7 text-light">
     <div class="mx-auto pt-5" style="width: 600px" style="margin-top: 50px;">
-      <% if @post.asbol == 'shop_name' %>
+      <% if @post.asbol == '店飲み' %>
         <h4>店飲み</h4>
         <%= form_with model: @post, url: post_path do |f| %>
           <div class="form-group">
@@ -16,10 +16,10 @@
           <div class="form-group">
             <%= f.text_field :address, placeholder: "住所",size:"60*60" %>
           </div>
-          <%= f.hidden_field :asbol, :value =>"shop_name" %>
+          <%= f.hidden_field :asbol, :value =>"店飲み" %>
           <%= f.submit '編集を保存する' %>
         <% end %>
-      <% elsif @post.asbol=='alcohol' %>
+      <% elsif @post.asbol=='宅飲み' %>
         <h3>宅飲み</h3>
         <%= form_with model: @post, url: post_path do |f| %>
           <div class="form-group">
@@ -31,7 +31,7 @@
           <div class="form-group">
             <%= f.text_area :comment,placeholder:"コメント",size:"60*60" %>
           </div>
-          <%= f.hidden_field :asbol, :value =>"alcohol" %>
+          <%= f.hidden_field :asbol, :value =>"宅飲み" %>
           <%= f.submit '編集を保存する' %>
         <% end %>
       <% end %>
