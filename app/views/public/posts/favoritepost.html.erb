@@ -5,10 +5,12 @@
         <%= link_to post_path(bookmark.post) do %>
             <%= image_tag bookmark.post.image, size: "230x230" %><br>
         <% end %>
-        <% if bookmark.post.asbol=="shop_name" %>
+        <% if bookmark.post.asbol=="店飲み" %>
+          <%= bookmark.post.asbol %><br>
           <%= bookmark.post.name %><br>
           <%= bookmark.post.address %><br>
-        <% elsif bookmark.post.asbol=="alcohol" %>
+        <% elsif bookmark.post.asbol=="家飲み" %>
+        　<%= bookmark.post.asbol %><br>
           <%= bookmark.post.name %><br>
         <% end %>
       </p>
