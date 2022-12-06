@@ -11,11 +11,7 @@ class Public::PostCommentsController < ApplicationController
       flash[:notice] = "コメントが入力されていません"
     end
   end
-
-
-
-
-
+  
   private
 
   def post_comment_params

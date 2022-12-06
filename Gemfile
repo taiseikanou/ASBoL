@@ -69,4 +69,7 @@ gem "net-imap"
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'kaminari','~>1.2.1'
+group :development do
+  gem 'rubocop', require: false
+end
 

@@ -1,20 +1,20 @@
 class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_member, only:[:show,:edit,:withdrawal]
   def index
     @members = Member.all.order(created_at: :desc)
   end
 
   def show
-    @member = Member.find(params[:id])
     @posts = @member.posts.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit
-    @member = Member.find(params[:id])
+
   end
 
   def withdrawal
-    @member = Member.find(params[:id])
+
     if @member.member_status==false
       @member.update(member_status: "true")
       flash[:notice] = "退会処理を実行いたしました"
@@ -32,6 +32,10 @@ class Admin::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:name, :nickname,:email,:member_status)
+  end
+  
+  def set_member
+    @member = Member.find(params[:id])
   end
 
 end
