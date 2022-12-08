@@ -1,11 +1,11 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_post,only:[:edit,:show,:destroy,:post_comment,:update]
-  before_action :set_member,only[:show,:post_comment]
+  before_action :set_member,only:[:show,:post_comment]
 
 
   def index
-    @posts = Post.page(params[:page]).per(10).order(created_at: :desc)
+    @posts = Post.page(params[:page]).per(30).order(created_at: :desc)
   end
 
   def edit

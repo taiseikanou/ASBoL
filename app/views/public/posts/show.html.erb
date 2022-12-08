@@ -37,7 +37,7 @@
           let map
 
           function initMap(){
-            var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+             test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
             map = new google.maps.Map(document.getElementById('map'), {
               center: test,
               zoom: 16

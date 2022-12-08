@@ -1,6 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
-  before_action :set_member,only: [:edit,:withdrawal,:unsubscribe]
+  before_action :set_member,only: [:edit,:withdrawal,:unsubscribe,:update]
   def show
     @member = Member.find(params[:id])
     @posts = @member.posts.page(params[:page]).per(10).order(created_at: :desc)
@@ -33,7 +33,7 @@ class Public::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name, :nickname,:email,:member_status)
+    params.require(:member).permit(:name, :nickname,:email,:member_status,:profile_image)
   end
 
   def set_member
