@@ -21,25 +21,7 @@
     </table>
 </div>
 <% elsif @range == "投稿" %>
-  <div class="row ml-5">
-    <% @posts.each do |posts| %>
-      <div class="col-md-5-mx-5">
-        <p class="card-body text-center text-light">
-          <%= link_to post_path(posts.id) do %>
-            <%= image_tag posts.image, size: "230x230" %><br>
-          <% end %>
-          <% if posts.asbol=="店飲み" %>
-          <%= posts.asbol %><br>
-          <%= posts.name %><br>
-          <%= posts.address %><br>
-          <% elsif posts.asbol=="宅飲み" %>
-          <%= posts.asbol %><br>
-          <%= posts.name %><br>
-          <% end %>
-        </p>
-      </div>
-    <%end%>
-  </div>
+<%= render 'public/posts/list',posts: @posts %>
 <% end %>
 
 

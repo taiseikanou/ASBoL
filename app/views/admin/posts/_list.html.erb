@@ -7,11 +7,11 @@
         <% end %>
         <% if posts.asbol=="店飲み" %>
           <%= posts.asbol %><br>
-          <%= posts.name %><br>
-          <%= posts.address %><br>
+          <%= truncate(posts.name,length:17) %><br>
+          <%= truncate(posts.address,length:17) %><br>
         <% elsif posts.asbol=="家飲み" %>
-        　<%= posts.asbol %><br>
-          <%= posts.name %><br>
+        　<%= posts.asbol%><br>
+          <%= truncate(posts.name, length:17)%><br>
         <% end %>
       </p>
     </div>

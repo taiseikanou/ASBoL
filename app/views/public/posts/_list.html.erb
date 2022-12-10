@@ -2,19 +2,18 @@
   <% posts.each do |posts| %>
     <div class="col-md-5-mx-5">
       <p class="card-body text-center text-light">
-        <%= link_to admin_post_path(posts.id) do %>
+        <%= link_to post_path(posts.id) do %>
           <%= image_tag posts.image, size: "230x230" %><br>
         <% end %>
         <% if posts.asbol=="店飲み" %>
           <%= posts.asbol %><br>
-          <%= posts.name %><br>
-          <%= posts.address %><br>
+          <%= truncate(posts.name,length:17) %><br>
+          <%= truncate(posts.address,length:17) %><br>
         <% elsif posts.asbol=="家飲み" %>
-        　<%= posts.asbol %><br>
-          <%= posts.name %><br>
+        　<%= posts.asbol%><br>
+          <%= truncate(posts.name, length:17)%><br>
         <% end %>
       </p>
     </div>
   <%end%>
 </div>
-<%= paginate posts %>
