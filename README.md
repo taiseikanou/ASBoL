@@ -14,8 +14,6 @@
 ### 主な利用シーン
 美味しいお酒を飲みにいきたいと思っている時、おすすめのお酒やお店を投稿したい時
 
-## 設計書
-使用検討中です
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -25,4 +23,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-使用検討中です
+サイト名：pixbay
+https://pixabay.com/ja/photos/search/%E9%85%92/?manual_search=1
