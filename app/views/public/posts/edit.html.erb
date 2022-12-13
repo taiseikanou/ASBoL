@@ -19,7 +19,7 @@
           <%= f.hidden_field :asbol, :value =>"店飲み" %>
           <%= f.submit '編集を保存する' %>
         <% end %>
-      <% elsif @post.asbol=='宅飲み' %>
+      <% else %>
         <h3>宅飲み</h3>
         <%= form_with model: @post, url: post_path do |f| %>
           <div class="form-group">
