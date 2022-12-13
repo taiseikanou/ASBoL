@@ -31,9 +31,9 @@ class Admin::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name, :nickname,:email,:member_status)
+    params.require(:member).permit(:name, :nickname,:email,:member_status,:profile_image)
   end
-  
+
   def set_member
     @member = Member.find(params[:id])
   end
